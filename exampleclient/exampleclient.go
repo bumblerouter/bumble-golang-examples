@@ -96,19 +96,19 @@ func main() {
 	}
 }
 
-func onConnect() {
+func onConnect(c *client.Client) {
 	fmt.Println("We connected.")
 }
 
-func onDisconnect() {
+func onDisconnect(c *client.Client) {
 	fmt.Println("We disconnected or got disconnected.")
 }
 
-func onAuthentication(success bool) {
+func onAuthentication(c *client.Client, success bool) {
 	fmt.Printf("Did we authenticate?  %t\n", success)
 	config.IsAuthenticated = success
 }
 
-func onMessage(e *envelope.Envelope, m *message.Header) {
+func onMessage(c *client.Client, e *envelope.Envelope, m *message.Header) {
 	fmt.Printf("We got a message: %s\n", m)
 }
